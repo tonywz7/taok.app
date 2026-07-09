@@ -1,8 +1,8 @@
-# Optimus Design System
+# Taok Design System
 
 ## Overview
 
-Optimus is a premium AI platform landing page built with a sophisticated, modern design system. The design emphasizes clarity, sophistication, and performance while maintaining an innovative, forward-thinking aesthetic.
+Taok is an AI-native GTM Workspace landing page built with a sophisticated, modern design system. The design emphasizes clarity, sophistication, and performance while maintaining a calm, forward-thinking aesthetic focused on research and execution.
 
 ---
 
@@ -66,6 +66,24 @@ Three carefully selected typefaces optimize for both aesthetics and performance:
 - **Body text**: `leading-relaxed` (1.625) or `leading-6` (1.5)
 - **Headings**: `leading-tight` (1.25) for impact
 - **Code**: `leading-relaxed` for readability
+
+---
+
+## Brand Personality
+
+- **Brand Personality**: Premium, technical, calm, modern, minimal, and helpful — never loud or gimmicky.
+- **Core Values**: Intelligence, Execution, Trust, Speed, Enterprise Readiness, Clarity.
+- **Product Focus**: AI research, lead discovery, company intelligence, signal monitoring, workflow automation.
+
+---
+
+## Product Messaging
+
+- **Headline**: "Research to execute — move faster with AI"
+- **Subheadline**: "Move from research to execution with AI that understands your market. Discover leads, generate intelligence, and execute with confidence."
+- **Primary CTA**: "Start research free"
+- **Secondary CTA**: "Watch demo"
+- **Navigation CTA**: "Start research" / "Explore workspace"
 
 ---
 
@@ -244,57 +262,47 @@ Dark mode is supported through OKLch values in the `:root` CSS variables. The co
 ### Landing Page Sections
 
 1. **Navigation** (`navigation.tsx`)
-   - Sticky header with smooth scroll navigation
-   - Responsive menu for mobile
+   - Sticky header with Taok logo, nav links, and research CTA (transitions on scroll)
 
 2. **Hero Section** (`hero-section.tsx`)
-   - Large display typography
-   - Animated 3D sphere background
-   - Primary CTA button
+   - Animated headline with rotating words (research, discover, execute, scale)
+   - Description about AI research and lead discovery
+   - Dual CTAs for starting research and watching demo
+   - GTM team metrics marquee
 
 3. **Features Section** (`features-section.tsx`)
-   - Feature cards with icons
-   - Hover lift animations
+   - Grid of key AI research capabilities
 
 4. **How It Works** (`how-it-works-section.tsx`)
-   - Step-by-step breakdown
-   - Numbered cards
+   - Three-step research pipeline: Feed Targets → Launch AI Research → Execute with Confidence
+   - Animated code examples for research workflows
 
-5. **Infrastructure** (`infrastructure-section.tsx`)
-   - 3D tetrahedron visualization
-   - Technical details
+5. **Developers Section** (`developers-section.tsx`)
+   - API and integration focus for technical GTM teams
 
-6. **Developers** (`developers-section.tsx`)
-   - Developer-focused content
-   - Code snippets display
+6. **Infrastructure Section** (`infrastructure-section.tsx`)
+   - Enterprise-grade research infrastructure
 
-7. **Security Section** (`security-section.tsx`)
-   - Security features highlight
-   - Trust indicators
+7. **Integrations Section** (`integrations-section.tsx`)
+   - Connected data sources and platforms
 
-8. **Testimonials** (`testimonials-section.tsx`)
-   - User testimonials with avatars
-   - Marquee animation for scrolling
+8. **Metrics Section** (`metrics-section.tsx`)
+   - Research speed and efficiency statistics
 
-9. **Pricing** (`pricing-section.tsx`)
-   - Pricing tiers comparison
-   - Plan selection
+9. **Pricing Section** (`pricing-section.tsx`)
+   - Tiered research workspace plans
 
-10. **Integrations** (`integrations-section.tsx`)
-    - Partner logos with marquee animation
-    - Integration showcase
+10. **Security Section** (`security-section.tsx`)
+    - Enterprise trust, compliance, and data security
 
-11. **Metrics** (`metrics-section.tsx`)
-    - Key statistics display
-    - Number animations
+11. **Testimonials Section** (`testimonials-section.tsx`)
+    - Rotating GTM leader quotes with research metrics
 
 12. **CTA Section** (`cta-section.tsx`)
-    - Final call-to-action
-    - Bottom funnel conversion
+    - Final conversion moment for workspace signup
 
-13. **Footer** (`footer-section.tsx`)
-    - Navigation links
-    - Company information
+13. **Footer Section** (`footer-section.tsx`)
+    - Links, social, legal, and Taok branding
 
 ---
 

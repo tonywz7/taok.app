@@ -5,38 +5,39 @@ import { useEffect, useRef, useState } from "react";
 const steps = [
   {
     number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
+    title: "Feed your targets",
+    description: "Upload your prospect list or connect to your CRM. Taok enriches and validates every record.",
+    code: `import { taok } from '@taok/research'
 
-optimus.connect({
-  source: 'your-database',
-  sync: true
+taok.upload({
+  source: 'prospect-list',
+  format: 'csv'
 })`,
   },
   {
     number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
+    title: "Launch AI research",
+    description: "Run automated research across 50+ data sources. Get company and people intelligence instantly.",
+    code: `taok.research({
+  target: 'companies',
+  depth: 'comprehensive',
+  include: [
+    'firmographics',
+    'contacts',
+    'signals'
   ]
 })`,
   },
   {
     number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
+    title: "Execute with confidence",
+    description: "Export enriched leads, run workflows, or let AI agents handle outreach at scale.",
+    code: `taok.export({
+  format: 'salesforce',
+  automate: true
 })
 
-// Deployed to 12 regions`,
+// Synced and ready for outreach`,
   },
 ];
 
@@ -88,7 +89,7 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            Research Pipeline
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
@@ -97,7 +98,7 @@ export function HowItWorksSection() {
           >
             Three steps.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">Qualified leads ready to close.</span>
           </h2>
         </div>
 

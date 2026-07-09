@@ -4,32 +4,32 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "Optimus transformed our deployment pipeline. What used to take hours now happens in seconds.",
+    quote: "Taok's AI research cut our prospect research time by 80%. What used to take days now happens in hours.",
     author: "Sarah Chen",
-    role: "CTO",
-    company: "Meridian Labs",
-    metric: "10x faster deployments",
+    role: "VP Sales",
+    company: "RevenueLabs",
+    metric: "80% less research time",
   },
   {
-    quote: "The developer experience is unmatched. Our team's productivity has never been higher.",
+    quote: "Finally, enriched lead data we can trust. Our sales team's close rate jumped significantly.",
     author: "Marcus Webb",
-    role: "Engineering Lead",
-    company: "Flux Systems",
-    metric: "40% more features shipped",
+    role: "Director of Sales Ops",
+    company: "ScaleGenius",
+    metric: "35% higher close rate",
   },
   {
-    quote: "Finally, infrastructure that scales with our ambition. Zero downtime since we switched.",
+    quote: "The combination of research depth and execution speed is unmatched. No more manual research.",
     author: "Elena Rodriguez",
-    role: "VP Engineering",
-    company: "Beacon AI",
-    metric: "99.99% uptime",
+    role: "Chief Revenue Officer",
+    company: "BeaconGrowth",
+    metric: "200% productivity gain",
   },
   {
-    quote: "The integrations are seamless. We connected our entire stack in a single afternoon.",
+    quote: "Taok found qualified leads we were completely missing. Our pipeline is now full of tier-1 prospects.",
     author: "James Liu",
     role: "Founder",
-    company: "Prism Analytics",
-    metric: "50+ integrations used",
+    company: "VelocityAI",
+    metric: "500+ qualified leads/mo",
   },
 ];
 
