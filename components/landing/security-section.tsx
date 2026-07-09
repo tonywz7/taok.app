@@ -6,23 +6,23 @@ import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 const securityFeatures = [
   {
     icon: Shield,
-    title: "SOC 2 Type II",
-    description: "Independently audited security controls with continuous monitoring.",
+    title: "SOC 2 Type II Certified",
+    description: "Independently audited security controls with continuous monitoring of research systems.",
   },
   {
     icon: Lock,
-    title: "End-to-end encryption",
-    description: "AES-256 encryption for data at rest and TLS 1.3 in transit.",
+    title: "Data encryption & isolation",
+    description: "AES-256 encryption for prospect data at rest and TLS 1.3 in transit.",
   },
   {
     icon: Eye,
-    title: "Zero-trust architecture",
-    description: "Every request is authenticated and authorized. No exceptions.",
+    title: "Zero-trust access control",
+    description: "Every API call is authenticated and authorized. Research data stays isolated.",
   },
   {
     icon: FileCheck,
-    title: "GDPR & HIPAA",
-    description: "Full compliance with data protection and healthcare regulations.",
+    title: "GDPR & CCPA Compliant",
+    description: "Full compliance with data protection, privacy, and research regulations.",
   },
 ];
 
@@ -59,13 +59,13 @@ export function SecuritySection() {
               Security
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Trust is
+              Research security
               <br />
-              non-negotiable.
+              is non-negotiable.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Enterprise-grade security isn&apos;t optional. It&apos;s built into every layer 
-              of our platform, from infrastructure to application.
+              Your prospect data is confidential. Enterprise-grade security is built into every layer 
+              of Taok, from infrastructure to application.
             </p>
 
             {/* Certifications */}

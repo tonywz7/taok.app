@@ -3,12 +3,12 @@
 import { useEffect, useState, useRef } from "react";
 
 const locations = [
-  { city: "San Francisco", region: "US West", latency: "12ms" },
-  { city: "New York", region: "US East", latency: "18ms" },
-  { city: "London", region: "Europe", latency: "24ms" },
-  { city: "Tokyo", region: "Asia Pacific", latency: "32ms" },
-  { city: "Sydney", region: "Oceania", latency: "45ms" },
-  { city: "Sao Paulo", region: "South America", latency: "38ms" },
+  { city: "Company Data", region: "Firmographics", latency: "Verified" },
+  { city: "People Data", region: "Decision Makers", latency: "Enriched" },
+  { city: "Signal Detection", region: "Real-time", latency: "Live" },
+  { city: "Funding Data", region: "Capital Markets", latency: "Updated" },
+  { city: "News & Signals", region: "Business Events", latency: "Fresh" },
+  { city: "Intent Signals", region: "Buying Behavior", latency: "Active" },
 ];
 
 export function InfrastructureSection() {
@@ -47,31 +47,31 @@ export function InfrastructureSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              Infrastructure
+              Research Infrastructure
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Global by
+              Enterprise-grade
               <br />
-              default.
+              research at scale.
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-12">
-              Deploy once, run everywhere. Our edge network spans 17 data centers 
-              across 6 continents, delivering sub-50ms latency to 99% of the world.
+              Research infrastructure spanning global data sources and AI agents. 
+              Sub-second response times with 99.99% uptime for mission-critical research.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8">
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">17</div>
-                <div className="text-sm text-muted-foreground">Data centers</div>
+                <div className="text-4xl lg:text-5xl font-display mb-2">50+</div>
+                <div className="text-sm text-muted-foreground">Data sources</div>
               </div>
               <div>
                 <div className="text-4xl lg:text-5xl font-display mb-2">99.99%</div>
                 <div className="text-sm text-muted-foreground">Uptime SLA</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-display mb-2">&lt;50ms</div>
-                <div className="text-sm text-muted-foreground">Global latency</div>
+                <div className="text-4xl lg:text-5xl font-display mb-2">&lt;1s</div>
+                <div className="text-sm text-muted-foreground">Research latency</div>
               </div>
             </div>
           </div>
@@ -85,10 +85,10 @@ export function InfrastructureSection() {
             <div className="border border-foreground/10">
               {/* Header */}
               <div className="px-6 py-4 border-b border-foreground/10 flex items-center justify-between">
-                <span className="text-sm font-mono text-muted-foreground">Edge Network</span>
+                <span className="text-sm font-mono text-muted-foreground">Data Sources</span>
                 <span className="flex items-center gap-2 text-xs font-mono text-green-600">
                   <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  All operational
+                  All active
                 </span>
               </div>
 

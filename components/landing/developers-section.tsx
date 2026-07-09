@@ -6,51 +6,48 @@ import { Copy, Check } from "lucide-react";
 const codeExamples = [
   {
     label: "Install",
-    code: `npm install @optimus/sdk
+    code: `npm install @taok/research
 
 # or
-yarn add @optimus/sdk
-pnpm add @optimus/sdk`,
+yarn add @taok/research
+pnpm add @taok/research`,
   },
   {
     label: "Initialize",
-    code: `import { Optimus } from '@optimus/sdk'
+    code: `import { Taok } from '@taok/research'
 
-const optimus = new Optimus({
-  apiKey: process.env.OPTIMUS_KEY
+const taok = new Taok({
+  apiKey: process.env.TAOK_API_KEY
 })`,
   },
   {
-    label: "Deploy",
-    code: `const app = await optimus.deploy({
-  name: 'my-app',
-  region: 'auto',
-  scaling: {
-    min: 1,
-    max: 100
-  }
+    label: "Research",
+    code: `const findings = await taok.research({
+  companies: ['salesforce', 'hubspot'],
+  depth: 'comprehensive',
+  signals: true
 })
 
-console.log('Live at:', app.url)`,
+console.log('Leads found:', findings.count)`,
   },
 ];
 
 const features = [
   { 
-    title: "TypeScript native", 
-    description: "Full type safety with auto-generated types."
+    title: "Async-first", 
+    description: "Built for modern research workflows at scale."
   },
   { 
-    title: "Zero config", 
-    description: "Sensible defaults that just work."
+    title: "100+ sources", 
+    description: "Access company and people data from everywhere."
   },
   { 
-    title: "Edge-ready", 
-    description: "Runs anywhere: Node, Deno, Bun, browsers."
+    title: "Real-time signals", 
+    description: "Get buying signals as they happen."
   },
   { 
-    title: "12KB gzipped", 
-    description: "Lightweight with zero dependencies."
+    title: "Verified data", 
+    description: "Every record validated and enriched."
   },
 ];
 
@@ -119,16 +116,16 @@ export function DevelopersSection() {
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              For developers
+              For engineers
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Built by devs.
+              API built for
               <br />
-              <span className="text-muted-foreground">For devs.</span>
+              <span className="text-muted-foreground">research at scale.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              A thoughtfully designed SDK that gets out of your way. 
-              Ship faster with intuitive APIs and exceptional documentation.
+              A powerful SDK that gets out of your way. 
+              Build custom research workflows with intuitive APIs and complete documentation.
             </p>
             
             {/* Features */}

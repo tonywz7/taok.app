@@ -46,28 +46,28 @@ function AnimatedCounter({ end, suffix = "", prefix = "" }: { end: number; suffi
 
 const metrics = [
   { 
-    value: 2847392, 
-    suffix: "", 
+    value: 42, 
+    suffix: "M", 
     prefix: "",
-    label: "API requests today",
+    label: "Companies researched",
   },
   { 
     value: 99, 
     suffix: ".99%", 
     prefix: "",
-    label: "Uptime this quarter",
+    label: "Uptime SLA",
   },
   { 
-    value: 23, 
+    value: 800, 
     suffix: "ms", 
-    prefix: "",
-    label: "Average response time",
+    prefix: "", 
+    label: "Average research latency",
   },
   { 
-    value: 184, 
-    suffix: "", 
+    value: 150, 
+    suffix: "+", 
     prefix: "",
-    label: "Countries served",
+    label: "Data sources integrated",
   },
 ];
 
@@ -108,9 +108,9 @@ export function MetricsSection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              Performance you
+              Scale and speed
               <br />
-              can measure.
+              you can verify.
             </h2>
           </div>
           <div className="flex items-center gap-4 font-mono text-sm text-muted-foreground">

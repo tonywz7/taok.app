@@ -3,18 +3,18 @@
 import { useEffect, useState, useRef } from "react";
 
 const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+  { name: "Salesforce", category: "CRM" },
+  { name: "HubSpot", category: "Sales Platform" },
+  { name: "Slack", category: "Team Communication" },
+  { name: "LinkedIn", category: "People Data" },
+  { name: "Crunchbase", category: "Company Data" },
+  { name: "Apollo", category: "Contact Database" },
+  { name: "ZoomInfo", category: "B2B Intelligence" },
+  { name: "Clearbit", category: "Company Insights" },
+  { name: "Pitchbook", category: "Funding Data" },
+  { name: "PitchList", category: "Deal Flow" },
+  { name: "Gong", category: "Sales Intelligence" },
+  { name: "Outreach", category: "Sales Engagement" },
 ];
 
 export function IntegrationsSection() {
@@ -48,12 +48,12 @@ export function IntegrationsSection() {
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+            Works with your
             <br />
-            you already use.
+            entire GTM stack.
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            Seamlessly sync research with Salesforce, HubSpot, and 50+ sales and data platforms.
           </p>
         </div>
 

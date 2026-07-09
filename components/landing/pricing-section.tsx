@@ -5,48 +5,48 @@ import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    description: "For individuals and small projects",
+    name: "Workspace Free",
+    description: "For evaluating Taok research capabilities",
     price: { monthly: 0, annual: 0 },
     features: [
-      "Up to 3 projects",
-      "1GB storage",
-      "Community support",
-      "Basic analytics",
-      "SSL certificates",
+      "10 companies per month",
+      "Basic research capabilities",
+      "Email support",
+      "Core integrations",
+      "5 saved searches",
     ],
-    cta: "Start free",
+    cta: "Start research free",
     popular: false,
   },
   {
-    name: "Pro",
-    description: "For growing teams and businesses",
-    price: { monthly: 29, annual: 24 },
+    name: "Workspace Pro",
+    description: "For GTM teams running serious research",
+    price: { monthly: 199, annual: 159 },
     features: [
-      "Unlimited projects",
-      "100GB storage",
+      "Unlimited company research",
+      "Advanced signal detection",
       "Priority support",
-      "Advanced analytics",
-      "Custom domains",
+      "50+ integrations",
+      "AI-powered insights",
       "Team collaboration",
-      "API access",
+      "Full API access",
     ],
-    cta: "Start trial",
+    cta: "Launch workspace",
     popular: true,
   },
   {
     name: "Enterprise",
-    description: "For large-scale operations",
+    description: "For large-scale GTM operations",
     price: { monthly: null, annual: null },
     features: [
       "Everything in Pro",
-      "Unlimited storage",
+      "Unlimited everything",
       "24/7 dedicated support",
-      "Custom integrations",
-      "SLA guarantee",
-      "On-premise option",
-      "Security audit",
-      "Custom contracts",
+      "Custom AI agents",
+      "99.99% SLA",
+      "SSO and advanced security",
+      "Custom implementations",
+      "Account team",
     ],
     cta: "Contact sales",
     popular: false,
@@ -65,12 +65,12 @@ export function PricingSection() {
             Pricing
           </span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight text-foreground mb-6">
-            Simple, transparent
+            Simple research
             <br />
             <span className="text-stroke">pricing</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Start free and scale as you grow. No hidden fees, no surprises.
+            Start researching free. Scale with your team. No surprises, no commitment.
           </p>
         </div>
 

@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 const features = [
   {
     number: "01",
-    title: "Instant Deployment",
-    description: "Push to production in seconds. Our edge network ensures your applications load instantly, anywhere in the world.",
+    title: "Company Research",
+    description: "Analyze firmographics, funding, revenue, leadership, and competitive positioning. Uncover signals others miss with AI-powered research across 50+ sources.",
     visual: "deploy",
   },
   {
     number: "02",
-    title: "AI-Native Workflows",
-    description: "Build intelligent applications with built-in AI capabilities. From inference to training, everything scales automatically.",
+    title: "People Intelligence",
+    description: "Research decision makers, buyers, and champions at scale. Verify contact information and build knowledge about who influences buying decisions.",
     visual: "ai",
   },
   {
     number: "03",
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly. Live preview, instant feedback, and version control that actually makes sense.",
+    title: "Signal Detection",
+    description: "Discover buying signals automatically. Funding rounds, executive changes, expansions, and hiring patterns that indicate buyer readiness.",
     visual: "collab",
   },
   {
     number: "04",
-    title: "Enterprise Security",
-    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data stays yours.",
+    title: "Enterprise Trust",
+    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your research data and prospect lists stay secure.",
     visual: "security",
   },
 ];
@@ -323,16 +323,16 @@ export function FeaturesSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Capabilities
+            Research Capabilities
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everything you need.
+            Intelligence built in.
             <br />
-            <span className="text-muted-foreground">Nothing you don&apos;t.</span>
+            <span className="text-muted-foreground">No complexity required.</span>
           </h2>
         </div>
 

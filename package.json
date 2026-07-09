@@ -1,6 +1,7 @@
 {
-  "name": "my-v0-project",
+  "name": "taok-workspace",
   "version": "0.1.0",
+  "description": "Taok - AI-native GTM Workspace for research and intelligence",
   "private": true,
   "scripts": {
     "build": "next build",
