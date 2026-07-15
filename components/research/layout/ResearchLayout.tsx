@@ -8,21 +8,21 @@ export default function ResearchLayout() {
     <div className="min-h-screen flex flex-col bg-white text-slate-900">
       <header className="border-b bg-white/60 backdrop-blur-sm px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-lg font-semibold">Research Workspace</h1>
-          <div className="flex items-center gap-3">
-            {/* future header actions */}
-            <span className="text-sm text-slate-500">taok</span>
-          </div>
+          <a href="/" className="text-lg font-semibold hover:text-slate-600">Taok Research</a>
+          <nav aria-label="Research navigation" className="flex items-center gap-4 text-sm">
+            <a href="/research" aria-current="page" className="font-medium text-slate-900">Workspace</a>
+            <a href="/research/citations" className="text-slate-500 hover:text-slate-900">Citations</a>
+          </nav>
         </div>
       </header>
 
       <main className="flex-1 overflow-hidden">
-        <div className="max-w-[1600px] mx-auto h-full grid grid-cols-12 gap-4 p-4">
-          <aside className="col-span-3 hidden lg:block h-[calc(100vh-96px)] overflow-auto rounded-md border bg-slate-50">
+        <div className="max-w-[1600px] mx-auto min-h-full lg:h-full grid grid-cols-12 gap-4 p-3 sm:p-4">
+          <aside className="col-span-12 lg:col-span-3 h-auto lg:h-[calc(100vh-96px)] overflow-auto rounded-md border bg-slate-50">
             <ResearchSidebar />
           </aside>
 
-          <section className="col-span-12 lg:col-span-6 h-[calc(100vh-96px)] overflow-auto rounded-md border bg-white">
+          <section className="col-span-12 lg:col-span-9 xl:col-span-6 min-h-[60vh] lg:h-[calc(100vh-96px)] overflow-auto rounded-md border bg-white">
             <Suspense fallback={<div className="p-6">Loading canvas…</div>}>
               <ResearchCanvas />
             </Suspense>

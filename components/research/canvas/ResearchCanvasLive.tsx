@@ -139,7 +139,7 @@ export function ResearchCanvasLive({ sessionId }: ResearchCanvasLiveProps) {
 
               {/* Prompt composer */}
               <div className="p-4 border-t bg-white">
-                <PromptComposer onSubmit={handlePromptSubmit} />
+                <PromptComposer onSubmit={handlePromptSubmit} disabled={!sessionId} />
               </div>
             </div>
 

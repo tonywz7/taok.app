@@ -1,31 +1,22 @@
 'use client'
 
-import React, { useMemo, useState, useEffect } from 'react'
-import ResearchProjectList from './ResearchProjectList'
-import ResearchSessionList from './ResearchSessionList'
-import ResearchFavorites from './ResearchFavorites'
-import ResearchCollections from './ResearchCollections'
-import NewResearchButton from './NewResearchButton'
-import SearchInput from './SearchInput'
+import React from 'react'
 
 export default function ResearchSidebar() {
-  const [query, setQuery] = useState('')
-
   return (
     <div className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-sm font-semibold">Research</h2>
-        <NewResearchButton />
-      </div>
-
-      <SearchInput value={query} onChange={setQuery} placeholder="Search sessions" />
-
-      <div className="mt-4 space-y-4">
-        <ResearchFavorites />
-        <ResearchProjectList filter={query} />
-        <ResearchSessionList filter={query} />
-        <ResearchCollections />
-      </div>
+      <h2 className="text-sm font-semibold">Research tools</h2>
+      <p className="mt-2 text-sm leading-6 text-slate-600">
+        Review the citation demo or return to the product overview. Saved projects and sessions are not available in this preview.
+      </p>
+      <nav aria-label="Research tools" className="mt-4 flex flex-col gap-2">
+        <a href="/research/citations" className="rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white hover:bg-slate-700">
+          Open citation workspace
+        </a>
+        <a href="/" className="rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+          Product overview
+        </a>
+      </nav>
     </div>
   )
 }
