@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import type { CitationStreamEvent, ResearchCitation, ResearchSource } from '@/types/citations'
-import { isCitationStreamEvent } from '@/types/citations'
 import {
   emptyCitationState,
+  isCitationStreamEvent,
   reduceCitationEvent,
   reduceCitationEvents,
   referenceMap,

@@ -11,6 +11,33 @@ export function emptyCitationState(): CitationState {
   return { sources: {}, citations: {}, order: [] }
 }
 
+const STREAM_EVENT_TYPES = new Set([
+  'source_found',
+  'citation_added',
+  'verification_completed',
+])
+
+/**
+ * Runtime type guard for values arriving from an untyped stream (e.g. parsed
+ * JSON / SSE). Validates the discriminant and the minimum required payload so
+ * the reducer never receives a malformed event.
+ */
+export function isCitationStreamEvent(value: unknown): value is CitationStreamEvent {
+  if (typeof value !== 'object' || value === null) return false
+  const event = value as Record<string, unknown>
+  if (typeof event.type !== 'string' || !STREAM_EVENT_TYPES.has(event.type)) return false
+  switch (event.type) {
+    case 'source_found':
+      return typeof event.source === 'object' && event.source !== null
+    case 'citation_added':
+      return typeof event.citation === 'object' && event.citation !== null
+    case 'verification_completed':
+      return typeof event.citationId === 'string' && typeof event.verification === 'string'
+    default:
+      return false
+  }
+}
+
 /**
  * Pure reducer that folds a citation/source streaming event into the aggregate
  * state. Always returns a new state object (immutable) so React can diff it.
