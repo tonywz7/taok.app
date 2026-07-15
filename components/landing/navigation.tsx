@@ -70,12 +70,20 @@ export function Navigation() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <a
+              href="/workspace"
+              className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${
+                isScrolled ? "text-xs" : "text-sm"
+              }`}
+            >
+              Workspace
+            </a>
+            <a
               href="/research/citations"
               className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${
                 isScrolled ? "text-xs" : "text-sm"
               }`}
             >
-              Review citations
+              Citations
             </a>
             <Button
               size="sm"
@@ -128,8 +136,8 @@ export function Navigation() {
             style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
           >
             <Button variant="outline" className="flex-1 rounded-full h-14 text-base" asChild>
-              <a href="/research/citations" onClick={() => setIsMobileMenuOpen(false)}>
-                Citations
+              <a href="/workspace" onClick={() => setIsMobileMenuOpen(false)}>
+                Workspace
               </a>
             </Button>
             <Button className="flex-1 bg-foreground text-background rounded-full h-14 text-base" asChild>

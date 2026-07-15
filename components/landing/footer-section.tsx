@@ -4,6 +4,7 @@ import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
   Explore: [
+    { name: "Dashboard", href: "/workspace" },
     { name: "Research workspace", href: "/research" },
     { name: "Citation workspace", href: "/research/citations" },
   ],
