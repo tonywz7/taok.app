@@ -7,9 +7,10 @@ import { ResearchActionPanel } from '../results/ResearchActionPanel'
 import { RuntimeTimeline, type TimelineEntry } from '../runtime/RuntimeTimeline'
 import { RuntimeStageProgress, type ResearchStage } from '../runtime/RuntimeStageProgress'
 import { ExecutionFeed, type ExecutionLog } from '../runtime/ExecutionFeed'
+import { LivingReport } from '../report/LivingReport'
 
 export default function ResearchInspector() {
-  const [activeTab, setActiveTab] = useState<'runtime' | 'results' | 'export' | 'actions'>('runtime')
+  const [activeTab, setActiveTab] = useState<'runtime' | 'report' | 'results' | 'export' | 'actions'>('runtime')
 
   // Placeholder runtime data
   const mockStages: ResearchStage[] = [
@@ -68,6 +69,7 @@ export default function ResearchInspector() {
 
   const tabs = [
     { id: 'runtime', label: 'Runtime', icon: '⚙️' },
+    { id: 'report', label: 'Report', icon: '📄' },
     { id: 'results', label: 'Results', icon: '📊' },
     { id: 'actions', label: 'Actions', icon: '⚡' },
     { id: 'export', label: 'Export', icon: '📥' },
@@ -80,7 +82,7 @@ export default function ResearchInspector() {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id as 'runtime' | 'results' | 'export' | 'actions')}
+            onClick={() => setActiveTab(tab.id as 'runtime' | 'report' | 'results' | 'export' | 'actions')}
             className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'border-slate-900 text-slate-900'
@@ -122,6 +124,7 @@ export default function ResearchInspector() {
               </div>
             </div>
           )}
+          {activeTab === 'report' && <LivingReport />}
           {activeTab === 'results' && <ResultsOrganizer />}
           {activeTab === 'actions' && <ResearchActionPanel />}
           {activeTab === 'export' && <ExportPanel />}
