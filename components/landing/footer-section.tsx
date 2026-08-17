@@ -2,7 +2,9 @@
 
 import { AnimatedWave } from "./animated-wave";
 
-const footerLinks = {
+type FooterLink = { name: string; href: string; badge?: string };
+
+const footerLinks: Record<string, FooterLink[]> = {
   Explore: [
     { name: "Dashboard", href: "/workspace" },
     { name: "Research workspace", href: "/research" },

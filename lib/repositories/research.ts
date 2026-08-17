@@ -16,13 +16,17 @@ export async function getResearchSessionsByOrganization(
   organizationId: string,
   options?: { limit?: number; offset?: number }
 ) {
-  let query = db.query.researchSessions.findMany({
-    where: eq(researchSessions.organization_id, organizationId),
-    orderBy: (sessions) => [sessions.created_at],
-  });
+  const query = db
+    .select()
+    .from(researchSessions)
+    .where(eq(researchSessions.organization_id, organizationId))
+    .orderBy(researchSessions.created_at);
 
-  if (options?.limit) query = query.limit(options.limit);
-  if (options?.offset) query = query.offset(options.offset);
+  if (options?.limit !== undefined || options?.offset !== undefined) {
+    return query
+      .limit(options.limit ?? 100)
+      .offset(options.offset ?? 0);
+  }
 
   return query;
 }

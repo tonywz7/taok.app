@@ -16,16 +16,20 @@ export async function getProjectsByOrganization(
   organizationId: string,
   options?: { limit?: number; offset?: number }
 ) {
-  let query = db.query.projects.findMany({
-    where: and(
+  const query = db
+    .select()
+    .from(projects)
+    .where(and(
       eq(projects.organization_id, organizationId),
       eq(projects.status, 'active')
-    ),
-    orderBy: (projects) => [projects.created_at],
-  });
+    ))
+    .orderBy(projects.created_at);
 
-  if (options?.limit) query = query.limit(options.limit);
-  if (options?.offset) query = query.offset(options.offset);
+  if (options?.limit !== undefined || options?.offset !== undefined) {
+    return query
+      .limit(options.limit ?? 100)
+      .offset(options.offset ?? 0);
+  }
 
   return query;
 }

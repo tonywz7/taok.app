@@ -15,11 +15,13 @@ export async function GET(request: NextRequest) {
     }
 
     const { searchParams } = new URL(request.url);
-    const query = searchParams.get('query');
-    const company_id = searchParams.get('company_id');
-    const seniority = searchParams.get('seniority') as any;
-    const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
-    const limit = Math.min(100, parseInt(searchParams.get('limit') || '20', 10));
+    const query = searchParams.get('query') ?? undefined;
+    const company_id = searchParams.get('company_id') ?? undefined;
+    const seniority = searchParams.get('seniority') ?? undefined;
+    const pageValue = searchParams.get('page');
+    const limitValue = searchParams.get('limit');
+    const page = pageValue === null ? undefined : Number(pageValue);
+    const limit = limitValue === null ? undefined : Number(limitValue);
 
     const validated = searchPeopleSchema.safeParse({
       query,
@@ -37,8 +39,9 @@ export async function GET(request: NextRequest) {
 
     const people = await peopleRepository.searchPeople(auth.organizationId, validated.data);
     const total = await peopleRepository.getPeopleCount(auth.organizationId);
+    const { page: validatedPage, limit: validatedLimit } = validated.data;
 
-    return listResponse(people, page, limit, total);
+    return listResponse(people, validatedPage, validatedLimit, total);
   } catch (error) {
     console.error('[GET /api/people]', error);
     return internalErrorResponse();

@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 import { people } from '@/lib/db/schema';
-import { eq, and, ilike, limit, offset } from 'drizzle-orm';
+import { eq, and, ilike, SQL } from 'drizzle-orm';
 import { CreatePersonInput, UpdatePersonInput, SearchPeopleInput } from '@/lib/validation';
 
 export async function getPersonById(id: string, organizationId: string) {
@@ -16,13 +16,17 @@ export async function getPeopleByOrganization(
   organizationId: string,
   options?: { limit?: number; offset?: number }
 ) {
-  let query = db.query.people.findMany({
-    where: eq(people.organization_id, organizationId),
-    orderBy: (people) => [people.created_at],
-  });
+  const query = db
+    .select()
+    .from(people)
+    .where(eq(people.organization_id, organizationId))
+    .orderBy(people.created_at);
 
-  if (options?.limit) query = query.limit(options.limit);
-  if (options?.offset) query = query.offset(options.offset);
+  if (options?.limit !== undefined || options?.offset !== undefined) {
+    return query
+      .limit(options.limit ?? 100)
+      .offset(options.offset ?? 0);
+  }
 
   return query;
 }
@@ -44,7 +48,7 @@ export async function searchPeople(
   const { query, company_id, seniority, page = 1, limit: pageLimit = 20 } = searchInput;
   const pageOffset = (page - 1) * pageLimit;
 
-  const filters: any[] = [eq(people.organization_id, organizationId)];
+  const filters: SQL[] = [eq(people.organization_id, organizationId)];
 
   if (query) {
     filters.push(
@@ -93,7 +97,10 @@ export async function updatePerson(
   organizationId: string,
   data: UpdatePersonInput
 ) {
-  const updates: any = { ...data, updated_at: new Date() };
+  const updates: Partial<UpdatePersonInput> & { updated_at: Date; full_name?: string } = {
+    ...data,
+    updated_at: new Date(),
+  };
   
   if (data.first_name || data.last_name) {
     const person = await getPersonById(id, organizationId);

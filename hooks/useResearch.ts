@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { ResearchStreamStatus, StreamStage } from '../types/research'
-
 export function useResearch(sessionId?: string) {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<any>(null)
+  const [data, setData] = useState<unknown>(null)
   const abortRef = useRef<AbortController | null>(null)
 
   useEffect(() => {

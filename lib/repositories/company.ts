@@ -1,6 +1,6 @@
 import { db } from '@/lib/db';
 import { companies } from '@/lib/db/schema';
-import { eq, and, like, ilike, limit, offset } from 'drizzle-orm';
+import { eq, and, ilike, SQL } from 'drizzle-orm';
 import { CreateCompanyInput, UpdateCompanyInput, SearchCompaniesInput } from '@/lib/validation';
 
 export async function getCompanyById(id: string, organizationId: string) {
@@ -16,13 +16,17 @@ export async function getCompaniesByOrganization(
   organizationId: string,
   options?: { limit?: number; offset?: number }
 ) {
-  let query = db.query.companies.findMany({
-    where: eq(companies.organization_id, organizationId),
-    orderBy: (companies) => [companies.created_at],
-  });
+  const query = db
+    .select()
+    .from(companies)
+    .where(eq(companies.organization_id, organizationId))
+    .orderBy(companies.created_at);
 
-  if (options?.limit) query = query.limit(options.limit);
-  if (options?.offset) query = query.offset(options.offset);
+  if (options?.limit !== undefined || options?.offset !== undefined) {
+    return query
+      .limit(options.limit ?? 100)
+      .offset(options.offset ?? 0);
+  }
 
   return query;
 }
@@ -34,7 +38,7 @@ export async function searchCompanies(
   const { query, industry, location, domain, page = 1, limit: pageLimit = 20 } = searchInput;
   const pageOffset = (page - 1) * pageLimit;
 
-  const filters: any[] = [eq(companies.organization_id, organizationId)];
+  const filters: SQL[] = [eq(companies.organization_id, organizationId)];
 
   if (query) {
     filters.push(
