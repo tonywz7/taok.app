@@ -6,19 +6,19 @@ import * as researchRepository from '@/lib/repositories/research';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const session = await researchRepository.getResearchSessionById(params.id, auth.organizationId);
+    const session = await researchRepository.getResearchSessionById((await params).id, auth.organizationId);
     if (!session) {
       return notFoundResponse('Research Session');
     }
 
-    const messages = await researchRepository.getSessionMessages(params.id, auth.organizationId);
+    const messages = await researchRepository.getSessionMessages((await params).id, auth.organizationId);
 
     return successResponse({
       ...session,
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
@@ -46,7 +46,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       );
     }
 
-    const session = await researchRepository.updateResearchSession(params.id, auth.organizationId, validated.data);
+    const session = await researchRepository.updateResearchSession((await params).id, auth.organizationId, validated.data);
     if (!session) {
       return notFoundResponse('Research Session');
     }

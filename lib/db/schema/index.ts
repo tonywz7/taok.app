@@ -1,3 +1,4 @@
+export * from './auth';
 export * from './organizations';
 export * from './organization-members';
 export * from './projects';

@@ -6,14 +6,14 @@ import * as peopleRepository from '@/lib/repositories/people';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const person = await peopleRepository.getPersonById(params.id, auth.organizationId);
+    const person = await peopleRepository.getPersonById((await params).id, auth.organizationId);
     if (!person) {
       return notFoundResponse('Person');
     }
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
@@ -41,7 +41,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       );
     }
 
-    const person = await peopleRepository.updatePerson(params.id, auth.organizationId, validated.data);
+    const person = await peopleRepository.updatePerson((await params).id, auth.organizationId, validated.data);
     if (!person) {
       return notFoundResponse('Person');
     }
@@ -53,14 +53,14 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const person = await peopleRepository.deletePerson(params.id, auth.organizationId);
+    const person = await peopleRepository.deletePerson((await params).id, auth.organizationId);
     if (!person) {
       return notFoundResponse('Person');
     }

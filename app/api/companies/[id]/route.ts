@@ -6,14 +6,14 @@ import * as companyRepository from '@/lib/repositories/company';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const company = await companyRepository.getCompanyById(params.id, auth.organizationId);
+    const company = await companyRepository.getCompanyById((await params).id, auth.organizationId);
     if (!company) {
       return notFoundResponse('Company');
     }
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
@@ -41,7 +41,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       );
     }
 
-    const company = await companyRepository.updateCompany(params.id, auth.organizationId, validated.data);
+    const company = await companyRepository.updateCompany((await params).id, auth.organizationId, validated.data);
     if (!company) {
       return notFoundResponse('Company');
     }
@@ -53,14 +53,14 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const company = await companyRepository.deleteCompany(params.id, auth.organizationId);
+    const company = await companyRepository.deleteCompany((await params).id, auth.organizationId);
     if (!company) {
       return notFoundResponse('Company');
     }

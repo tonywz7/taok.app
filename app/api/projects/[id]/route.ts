@@ -6,14 +6,14 @@ import * as projectRepository from '@/lib/repositories/project';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const project = await projectRepository.getProjectById(params.id, auth.organizationId);
+    const project = await projectRepository.getProjectById((await params).id, auth.organizationId);
     if (!project) {
       return notFoundResponse('Project');
     }
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
@@ -41,7 +41,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
       );
     }
 
-    const project = await projectRepository.updateProject(params.id, auth.organizationId, validated.data);
+    const project = await projectRepository.updateProject((await params).id, auth.organizationId, validated.data);
     if (!project) {
       return notFoundResponse('Project');
     }
@@ -53,14 +53,14 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const auth = await getAuthContext();
     if (!auth) {
       return validationErrorResponse('Authentication required');
     }
 
-    const project = await projectRepository.deleteProject(params.id, auth.organizationId);
+    const project = await projectRepository.deleteProject((await params).id, auth.organizationId);
     if (!project) {
       return notFoundResponse('Project');
     }

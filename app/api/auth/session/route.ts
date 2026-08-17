@@ -1,21 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+import { getCurrentSession } from '@/lib/auth/session'
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const cookie = request.cookies.get("taok_session")?.value ?? null;
-    if (!cookie) {
-      return NextResponse.json({ success: true, data: { user: null } });
-    }
-
-    // cookie value is a JSON stringified user in base64 (set by auth routes)
-    try {
-      const decoded = Buffer.from(cookie, "base64").toString("utf-8");
-      const user = JSON.parse(decoded);
-      return NextResponse.json({ success: true, data: { user } });
-    } catch (e) {
-      return NextResponse.json({ success: true, data: { user: null } });
-    }
-  } catch (e) {
-    return NextResponse.json({ success: false, error: { message: "Session unavailable" } }, { status: 500 });
+    const session = await getCurrentSession()
+    return NextResponse.json({ success: true, data: { user: session?.user ?? null } })
+  } catch (error) {
+    console.error('[GET /api/auth/session]', error)
+    return NextResponse.json(
+      { success: false, error: { message: 'Session unavailable' } },
+      { status: 500 },
+    )
   }
 }
